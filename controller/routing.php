@@ -26,8 +26,18 @@ switch ($var_getMenu) {
     case "registrarse":
         require_once('./views/Registrarse.php');
         break;
-    
-    default:
+    case "usuario":
+            include_once './model/Usuarios.php';
+            $sqlUsuario = Usuario::consultar();
+            include_once './model/ViewUsuarios.php';
+            break;
+    case "registro":
+                include_once './model/Registros.php';
+                $sqlRegistro = Registro::consultar();
+                include_once './model/ViewRegistro.php';
+                break;
+      
+ default:
         require_once('./views/Home.php');
 }
 
