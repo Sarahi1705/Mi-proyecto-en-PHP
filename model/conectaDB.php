@@ -20,7 +20,7 @@ echo '<br>';
 echo 'Error: ' . $mysqli->connect_error;
 exit();
 }
-echo 'La conexión es correcta.';
+echo '';
 return $mysqli;
 }
 }
