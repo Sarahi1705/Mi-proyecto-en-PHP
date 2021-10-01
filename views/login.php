@@ -39,14 +39,31 @@
         
 
         <div class="col s5 lime lighten-4 center"> 
+
             <span class="offset-m3 center">
-           <form action="index.html" method="get">
+            <?php
+$estado_session = session_status();
+if($estado_session == PHP_SESSION_NONE)
+{
+session_start();
+}
+if (isset($_SESSION['loggedUserName'])) {
+?>
+<h3>No tiene permisos para entrar a la página <h3>
+<?php
+}else {
+?>
+<br />
+<br />
+           
+    <form action="./controller/login.php" method="post"> 
         <div class="row card-panel z-depth-8">
+
         <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
         <input
         type="text"
-        placeholder="Ingresa tu cuenta de usuario"
+        placeholder="Ingresa tu nombre"
         id="usuario"
         name="usuario"
         class="validate"
@@ -58,12 +75,12 @@
         <i class="material-icons prefix">lock</i>
         <input
         type="password"
-        id="pswd"
-        name="pswd"
+        id="password"
+        name="password"
         class="validate"
         required
         />
-        <label for="pswd">Contraseña</label>
+        <label for="password">Contraseña</label>
         </div>
         <button class="btn blue right">
         <i class="material-icons left">check</i>
@@ -71,9 +88,12 @@
         </button>
         </div>
         </form>
+        <?php }?>
     </span>
+
     <img src="Img/niña.png" width="250" height="273" />
     </div>
+   
 </div>
 
 <!--Pie de pagina-->
