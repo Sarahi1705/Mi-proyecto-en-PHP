@@ -1,14 +1,8 @@
 
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $var_getMenu = isset($_GET['menu']) ? $_GET['menu'] : 'inicio';
-// $var_getMenu = $_GET['menu'];
+
 
 switch ($var_getMenu) {
     case "inicio":
@@ -26,16 +20,36 @@ switch ($var_getMenu) {
     case "registrarse":
         require_once('./views/Registrarse.php');
         break;
-    case "usuario":
-            include_once './model/Usuarios.php';
-            $sqlUsuario = Usuario::consultar();
-            include_once './model/ViewUsuarios.php';
+   
+    case "alumnos":
+                    include_once './model/Alumnos.php';
+                    $sqlAlumnos = alumnos::consultar();
+                    include_once './views/viewAlumnos.php';
+                    break;
+    case "bienvenido":
+        require_once('./views/bienvenido.php');
+        break;
+    case "logout":
+            $session_destroy = session_destroy();
+            header("location: ./index.php?menu=home");
             break;
-    case "registro":
-                include_once './model/Registros.php';
-                $sqlRegistro = Registro::consultar();
-                include_once './model/ViewRegistro.php';
+    case "deletealumno":
+                $_idalumno = trim(filter_input(INPUT_GET, 'idalumno'));
+               require_once ('./model/Alumnos.php');
+                $sqlAlumnos = alumnos::delete($_idalumno);
+                header("location: ./index.php?menu=alumnos");
                 break;
+    case "editalumno":
+                    $_idalumno = trim(filter_input(INPUT_GET, 'idalumno'));
+                    require_once ('./model/Alumnos.php');
+                    $sqlAlumnos = alumnos::consultarAlumno($_idalumno);
+                    include_once './views/Editar.php';
+                    
+                break;
+    case "editar":
+                    require_once('./views/Editar.php');
+                break; 
+    
       
  default:
         require_once('./views/Home.php');
