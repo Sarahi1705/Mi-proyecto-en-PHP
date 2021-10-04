@@ -84,6 +84,18 @@
                       return $acceso;
                     
                     }
+                public static function insert($_id, $_nombre, $_sexo) {
+                        $mysqli = conectadb::dbmysql();
+                        $stmt = $mysqli->prepare('INSERT INTO alumnos(id, nombre, sexo) VALUE (?,?,?)');
+                        $stmt->bind_param("sss", $_id, $_nombre, $_sexo);
+                        $stmt->execute();
+                        $acceso = false;
+                        if ($stmt->affected_rows == 1) {
+                            $acceso = true;
+                        }
+                        $mysqli->close();
+                        return $acceso;
+                    }
                     
                    
                     
