@@ -40,6 +40,7 @@ foreach ($sqlAlumnos as $alumnoview) { ?>
 </table>
 <table class="nuevo">
 <button class="btn waves-effect waves-light blue" type="submit" name="action">
-<a href="?menu=insertalumno&idalumno=<?php echo $alumnoview-> id;?>">
+<a href="?menu=insertalumno">
 <i class="material-icons right white-text">add</i></a>
+</butto>
 </table>
