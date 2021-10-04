@@ -49,6 +49,10 @@ switch ($var_getMenu) {
     case "editar":
                     require_once('./views/Editar.php');
                 break; 
+                break;
+    case "insertalumno":
+                    require_once('./views/InserAlumno.php');
+                    break;
     
       
  default:
